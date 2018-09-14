@@ -1,4 +1,4 @@
-import { connectAllState } from "@app.lib";
+import { withState } from "@app/lib";
 import React from "react";
 import styled from "styled-components";
 
@@ -8,6 +8,6 @@ const DashboardLogoContainer = styled.div`
     height: 64px;
 `;
 
-export const DashboardLogo = connectAllState(() => (
+export const DashboardLogo = withState()(() => (
     <DashboardLogoContainer />
 ));

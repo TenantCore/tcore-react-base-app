@@ -1,5 +1,5 @@
-import { ActionTypes } from "@redux.actiontypes";
-import { IAction } from "@redux.types";
+import { IAction } from "@app/types";
+import ActionTypes from "@redux/actions.types";
 
 export function Increment(): IAction<any> {
     return {

@@ -1,4 +1,4 @@
-import { IMenuConfig } from "@types";
+import { IMenuConfig } from "@app/types";
 import { Icon } from "antd";
 import React from "react";
 

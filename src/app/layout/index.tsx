@@ -6,9 +6,7 @@ import Header from "./Header";
 import SideMenu from "./Menu";
 
 export default ({ }: any) => (
-    <Layout
-        style={{ minHeight: "100%" }}
-    >
+    <Layout style={{ minHeight: "100%" }}>
         <SideMenu />
         <Layout style={{ marginLeft: 0 }}>
             <Header />

@@ -1,10 +1,9 @@
-import { connectAllState } from "@app.lib";
 import headerMenuList from "@app/app.header";
-import { CloseDrawer, OpenDrawer } from "@redux.actions/layout";
-import { IProfileMenu, IProfileMenuEntry } from "@types";
+import { withRouter, withState } from "@app/lib";
+import { IProfileMenu, IProfileMenuEntry } from "@app/types";
+import { CloseDrawer, OpenDrawer } from "@redux/actions/layout";
 import { Button, Dropdown, Icon, Layout, Menu } from "antd";
 import React from "react";
-import { withRouter } from "react-router-dom";
 
 const { Header } = Layout;
 /**
@@ -71,7 +70,7 @@ const mapMenu = (dispatch, push) => (item: IProfileMenu, index) => (
 /**
  *
  */
-export default withRouter(connectAllState(({ state, dispatch, history }) => (
+export default withRouter()(withState()(({ state, dispatch, history }) => (
     <Header
         style={{ background: "#fff", padding: "0px 5px 0px 27px", cursor: "pointer" }}
     >

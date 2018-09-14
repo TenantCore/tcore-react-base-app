@@ -1,5 +1,5 @@
-import { IAction } from "@redux.types";
 import React from "react";
+import { IAction } from "./redux";
 
 export interface IMenuConfig {
     itens: IMenuConfigEntry[];

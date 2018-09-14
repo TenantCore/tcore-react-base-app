@@ -1,5 +1,5 @@
 
-export const ActionTypes = {
+export default {
     INCREMENT : "COUNTER_INCREMENT",
     DECREMENT: "COUNTER_DECREMENT",
     DRAWER_OPEN: "[LAYOUT][DRAWER_OPEN]",

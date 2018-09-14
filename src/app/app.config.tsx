@@ -1,5 +1,5 @@
 import { DashboardLogo } from "@app/components";
-import * as reducers from "@app/reducers";
+import * as reducers from "@app/redux/reducers";
 import { IAppConfig } from "@app/types";
 import React from "react";
 import { applyMiddleware, compose } from "redux";
@@ -8,10 +8,16 @@ import reduxThunk from "redux-thunk";
 
 const AppConfig: IAppConfig = {
     isProduction: false,
-    // Api endpoints
-    endPoints: {
-        rest: "",
-        graphQL: "",
+    enviroments: {
+        dev: {
+            rest: "",
+        },
+        prod: {
+            rest: "",
+        },
+        stag: {
+            rest: "",
+        },
     },
     // Get reducers
     getReducers: () => ({

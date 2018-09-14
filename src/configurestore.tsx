@@ -1,8 +1,6 @@
 import config from "@app/app.config";
 import ApplicationLayout from "@app/layout";
-import * as reducers from "@app/reducers";
 import { client as apolloClient } from "@app/services/graphql";
-import { MuiThemeProvider } from "@material-ui/core/styles";
 import { LocaleProvider } from "antd";
 import pt_BR from "antd/lib/locale-provider/pt_BR";
 import "moment/locale/pt-br";

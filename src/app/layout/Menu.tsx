@@ -1,10 +1,10 @@
-import appConfig from "@app.config";
-import { connectAllState } from "@app.lib";
-import { CloseDrawer, OpenDrawer } from "@redux.actions/layout";
-import { IMenuConfig, IMenuConfigEntry } from "@types";
-import { Icon, Layout, Menu } from "antd";
+import appConfig from "@app/app.config";
+import { withRouter, withState } from "@app/lib";
+import { IMenuConfigEntry } from "@app/types";
+import { CloseDrawer, OpenDrawer } from "@redux/actions/layout";
+import { Layout, Menu } from "antd";
 import React from "react";
-import { matchPath, RouteComponentProps, withRouter } from "react-router-dom";
+import { matchPath, RouteComponentProps } from "react-router-dom";
 import uuid from "uuid/v5";
 import _menuConfig from "../app.menu";
 
@@ -108,29 +108,32 @@ const renderMenuItens = (navigate: (path: string, state?: any) => void) => (item
         throw new Error(`Invalid menu item type "${item.type}"`);
     }
 };
-/**
- * Menu item component
- */
-const MenuComponent: any = ({ state, dispatch, location, history }: any & RouteComponentProps<any>) => (
-    <Layout.Sider
-        theme={menuConfig.theme}
-        trigger={null}
-        breakpoint={menuConfig.breakpoint}
-        collapsed={state.layout.drawerOpen}
-        collapsedWidth={window.innerWidth > 600 ? 80 : 0}
-        onBreakpoint={(breakpoint) => breakpoint ? dispatch(OpenDrawer()) : dispatch(CloseDrawer())}
-    >
-        {appConfig.logo}
-        <Menu
-            theme={menuConfig.theme}
-            mode={menuConfig.mode}
-            inlineCollapsed={state.layout.drawerOpen}
-            selectedKeys={filterSelectedKeys(location.pathname)}
-            defaultOpenKeys={filterSelectedKeys(location.pathname, (item) => item.type === "SUBMENU")}
-        >
-            {menuConfig.itens.map(renderMenuItens(history.push))}
-        </Menu>
-    </Layout.Sider>
-);
 
-export default withRouter(connectAllState(MenuComponent));
+@withRouter()
+@withState()
+export default class MenuComponent extends React.Component {
+    public render() {
+        const { state, dispatch, location, history }: any & RouteComponentProps<any> = this.props;
+        return (
+            <Layout.Sider
+                theme={menuConfig.theme}
+                trigger={null}
+                breakpoint={menuConfig.breakpoint}
+                collapsed={state.layout.drawerOpen}
+                collapsedWidth={window.innerWidth > 600 ? 80 : 0}
+                onBreakpoint={(breakpoint) => breakpoint ? dispatch(OpenDrawer()) : dispatch(CloseDrawer())}
+            >
+                {appConfig.logo}
+                <Menu
+                    theme={menuConfig.theme}
+                    mode={menuConfig.mode}
+                    inlineCollapsed={state.layout.drawerOpen}
+                    selectedKeys={filterSelectedKeys(location.pathname)}
+                    defaultOpenKeys={filterSelectedKeys(location.pathname, (item) => item.type === "SUBMENU")}
+                >
+                    {menuConfig.itens.map(renderMenuItens(history.push))}
+                </Menu>
+            </Layout.Sider>
+        );
+    }
+}

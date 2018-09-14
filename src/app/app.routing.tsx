@@ -1,4 +1,4 @@
-import { IRouterConfig } from "@app/types";
+import { IRouterConfig } from "@app/types/router";
 
 const Routes: IRouterConfig = {
 

@@ -1,4 +1,4 @@
-import { decorateRouter } from "@app/lib";
+import { withRouter } from "@app/lib";
 import { IRouteProps } from "@app/types";
 import notFoundSvg from "@media/not-found.svg";
 import { Button, Divider, Icon } from "antd";
@@ -12,7 +12,7 @@ const NotFoundImage = styled.img `
   max-width: 100%;
 `;
 
-@decorateRouter
+@withRouter()
 export default class App extends React.Component<IRouteProps> {
 
   public onButtonClick(e: React.MouseEvent<HTMLButtonElement>): void {

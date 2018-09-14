@@ -1,4 +1,4 @@
-import { IProfileMenu } from "@types";
+import { IProfileMenu } from "@app/types";
 import { Icon } from "antd";
 import React from "react";
 

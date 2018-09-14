@@ -1,5 +1,5 @@
-import { ActionTypes } from "@app/actions";
-import { IAction } from "@redux.types";
+import { IAction } from "@app/types";
+import ActionTypes from "@redux/actions.types";
 import immutable from "seamless-immutable";
 
 const initialState = immutable({
