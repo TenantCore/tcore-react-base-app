@@ -1,4 +1,5 @@
 /// <reference path='./index.d.ts'/>
+import "lodash/fp";
 import React from "react";
 import ReactDOM from "react-dom";
 import ApplicationEntry from "./configurestore";
