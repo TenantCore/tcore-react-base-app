@@ -1,8 +1,8 @@
-import { IProfileMenu } from "@app/types";
+import { Dispatch, FNGetHeader } from "@app/types";
 import { Icon } from "antd";
 import React from "react";
 
-const headerMenuList: IProfileMenu[] = [
+const headerMenuList: FNGetHeader = (dispatch: Dispatch) => [
     {
         icon: <Icon type="user" />,
         itens: [

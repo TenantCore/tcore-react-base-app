@@ -1,5 +1,2 @@
-export * from "@app/types/router";
-export * from "@app/types/app";
-export * from "@app/types/decorators";
-export * from "@app/types/menu";
-export * from "@app/types/redux";
+export * from "./redux";
+export * from "./base";

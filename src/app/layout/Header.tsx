@@ -1,8 +1,9 @@
 import headerMenuList from "@app/app.header";
-import { withRouter, withState } from "@app/lib";
+import {withRouter, withState } from "@app/lib";
 import { IProfileMenu, IProfileMenuEntry } from "@app/types";
 import { CloseDrawer, OpenDrawer } from "@redux/actions/layout";
 import { Button, Dropdown, Icon, Layout, Menu } from "antd";
+import { map } from "lodash";
 import React from "react";
 
 const { Header } = Layout;
@@ -20,7 +21,8 @@ const mapProfileMenu = (dispatch, push) => (item: IProfileMenuEntry, index) => {
                 {item.label}
             </Menu.Item>
         );
-    } else if (item.type === "ROUTE") {
+    }
+    if (item.type === "ROUTE") {
         return (
             <Menu.Item
                 key={index}
@@ -30,7 +32,8 @@ const mapProfileMenu = (dispatch, push) => (item: IProfileMenuEntry, index) => {
                 {item.label}
             </Menu.Item>
         );
-    } else if (item.type === "URL") {
+    }
+    if (item.type === "URL") {
         return (
             <Menu.Item key={index}>
                 <a
@@ -42,7 +45,8 @@ const mapProfileMenu = (dispatch, push) => (item: IProfileMenuEntry, index) => {
                 </a>
             </Menu.Item>
         );
-    } else if (item.type === "DIVIDER") {
+    }
+    if (item.type === "DIVIDER") {
         return (
             <Menu.Divider key={index} />
         );
@@ -78,6 +82,6 @@ export default withRouter()(withState()(({ state, dispatch, history }) => (
             icon={state.layout.drawerOpen ? "menu-unfold" : "menu-fold"}
             onClick={() => state.layout.drawerOpen ? dispatch(CloseDrawer()) : dispatch(OpenDrawer())}
         />
-        {headerMenuList.map(mapMenu(dispatch, history.push))}
+        {map(headerMenuList(dispatch), mapMenu(dispatch, history.push))}
     </Header>
 )) as any);

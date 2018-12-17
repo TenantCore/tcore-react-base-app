@@ -24,6 +24,7 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@redux/*": ["src/app/redux/*"],
+      "@actions/*": ["src/app/redux/actions/*"],
       "@components": ["src/app/components/index"],
       "@media/*": ["src/media/*"],
       "@styles/*": ["src/styles/*"]

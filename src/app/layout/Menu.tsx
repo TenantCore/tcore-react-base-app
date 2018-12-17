@@ -98,15 +98,15 @@ const renderMenuItens = (navigate: (path: string, state?: any) => void) => (item
                 {renderMenuItemTitle(item)}
             </Menu.Item>
         );
-    } else if (item.type === "SUBMENU" && item.childrens instanceof Array) {
+    }
+    if (item.type === "SUBMENU" && item.childrens instanceof Array) {
         return (
             <Menu.SubMenu key={item.uid} title={renderMenuItemTitle(item)}>
                 {item.childrens.map(renderMenuItens(navigate))}
             </Menu.SubMenu>
         );
-    } else {
-        throw new Error(`Invalid menu item type "${item.type}"`);
     }
+    throw new Error(`Invalid menu item type "${item.type}"`);
 };
 
 @withRouter()
